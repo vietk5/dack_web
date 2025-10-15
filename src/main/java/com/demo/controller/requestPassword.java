@@ -67,7 +67,18 @@ public class requestPassword extends HttpServlet {
         }
 
         //Gửi email chứa link đặt lại mật khẩu
-        String linkReset = "http://localhost:8080/resetPassword?token=" + token;
+        String baseUrl;
+
+        // Nếu bạn muốn hỗ trợ cả localhost và Render:
+        if ("localhost".equals(request.getServerName()) || "127.0.0.1".equals(request.getServerName())) {
+            baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+        } else {
+            // Khi chạy trên Render (Render luôn dùng HTTPS)
+            baseUrl = "https://" + request.getServerName();
+        }
+
+        // Sinh link reset
+        String linkReset = baseUrl + "/resetPassword?token=" + token;
         boolean isSent = resetService.sendEmail(email, linkReset, kh.getHoTen());
 
         if (!isSent) {
