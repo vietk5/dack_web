@@ -12,7 +12,7 @@ public class VNPayConfig {
 
     // === CÁC THÔNG SỐ CẤU HÌNH ===
     public static String vnp_PayUrl = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-    public static String vnp_ReturnUrl = "http://localhost:8080/payment-return"; // Sửa context path nếu cần
+    public static String vnp_ReturnUrl = "https://electromatshop.onrender.com/payment-return"; // Sửa context path nếu cần
     public static String vnp_TmnCode = "K1SH6864";
     public static String vnp_HashSecret = "1J64G1DKLNTS3B30FSYO6XSPMW6QBE7E";
     public static String vnp_Version = "2.1.0";
